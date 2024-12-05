@@ -1,6 +1,7 @@
 *.zip
 *.ipynb
-/inputs/malaria_dataset/cell_images/test/Parasitized/*.png
-/inputs/malaria_dataset/cell_images/test/Uninfected/*.png
-/inputs/malaria_dataset/cell_images/train/Parasitized/*.png
-/inputs/malaria_dataset/cell_images/train/Uninfected/*.png
+/workspaces/WalkthroughProject01/inputs/malaria_dataset/cell_images/test/Parasitized/*.png
+/workspaces/WalkthroughProject01/inputs/malaria_dataset/cell_images/test/Uninfected/*.png
+/workspaces/WalkthroughProject01/inputs/malaria_dataset/cell_images/train/Parasitized/*.png
+/workspaces/WalkthroughProject01/inputs/malaria_dataset/cell_images/train/Uninfected/*.png
+/workspaces/WalkthroughProject01/inputs/malaria_dataset/cell_images/test/Parasitized/C130P91ThinF_IMG_20151004_141341_cell_157.png
