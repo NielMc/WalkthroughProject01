@@ -1,5 +1,5 @@
 *.zip
-inputs/malaria_dataset/cell_images/train/Parasitized
-inputs/malaria_dataset/cell_images/train/Uninfected
-inputs/malaria_dataset/cell_images/test/Parasitized
-inputs/malaria_dataset/cell_images/test/Uninfected
+inputs/malaria_dataset/cell_images/train/Parasitized/*.png
+inputs/malaria_dataset/cell_images/train/Uninfected/*.png
+inputs/malaria_dataset/cell_images/test/Parasitized/*.png
+inputs/malaria_dataset/cell_images/test/Uninfected/*.png
