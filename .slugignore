@@ -1,6 +1,6 @@
 *.zip
 *.ipynb
-inputs/malaria_dataset/cell_images/test/Parasitized/*.png
-inputs/malaria_dataset/cell_images/test/Uninfected/*.png
-inputs/malaria_dataset/cell_images/train/Parasitized/*.png
-inputs/malaria_dataset/cell_images/train/Uninfected/*.png
+/inputs/malaria_dataset/cell_images/test/Parasitized/*.png
+/inputs/malaria_dataset/cell_images/test/Uninfected/*.png
+/inputs/malaria_dataset/cell_images/train/Parasitized/*.png
+/inputs/malaria_dataset/cell_images/train/Uninfected/*.png
