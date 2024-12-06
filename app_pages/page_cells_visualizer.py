@@ -51,6 +51,7 @@ def page_cells_visualizer_body():
 
 
 
+
 def image_montage(dir_path, label_to_display, nrows, ncols, figsize=(15,10)):
   sns.set_style("white")
   labels = os.listdir(dir_path)
