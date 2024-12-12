@@ -4,7 +4,14 @@ import pandas as pd
 import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
+import PIL
+import urllib
 from matplotlib.image import imread
+import streamlit as st
+
+from streamlit_cld_product_gallery_widget import cld_product_gallery_widget
+st.secrets["CLOUDINARY_URL"]
+
 
 import itertools
 import random
@@ -40,8 +47,8 @@ def page_cells_visualizer_body():
 
     if st.checkbox("Image Montage"): 
       st.write("* To refresh the montage, click on the 'Create Montage' button")
-      my_data_dir = 'inputs/malaria_dataset/cell_images'
-      labels = os.listdir(my_data_dir+ '/validation')
+      my_data_dir = 'https://github.com/NielMc/WalkthroughProject01/tree/main/inputs/malaria_dataset/cell_images'
+      labels = ['Parasitized', 'Uninfected']
       label_to_display = st.selectbox(label="Select label", options=labels, index=0)
       if st.button("Create Montage"):      
         image_montage(dir_path= my_data_dir + '/validation',
@@ -54,22 +61,24 @@ def page_cells_visualizer_body():
 
 def image_montage(dir_path, label_to_display, nrows, ncols, figsize=(15,10)):
   sns.set_style("white")
-  labels = os.listdir(dir_path)
+  labels = ['Parasitized', 'Uninfected']
 
   # subset the class you are interested to display
   if label_to_display in labels:
 
     # checks if your montage space is greater than subset size
     # how many images in that folder
-    images_list = os.listdir(dir_path+'/'+ label_to_display)
-    if nrows * ncols < len(images_list):
-      img_idx = random.sample(images_list, nrows * ncols)
-    else:
-      print(
-          f"Decrease nrows or ncols to create your montage. \n"
-          f"There are {len(images_list)} in your subset. "
-          f"You requested a montage with {nrows * ncols} spaces")
-      return
+    url = dir_path+'/'+ label_to_display
+    images_list = os.walk(urllib.request.urlopen(url))
+    print(images_list)
+    # if nrows * ncols < len(images_list):
+    img_idx = random.sample(images_list, nrows * ncols)
+    # else:
+    #   print(
+    #       f"Decrease nrows or ncols to create your montage. \n"
+    #       f"There are {len(images_list)} in your subset. "
+    #       f"You requested a montage with {nrows * ncols} spaces")
+    #   return
     
 
     # create list of axes indices based on nrows and ncols
@@ -81,7 +90,7 @@ def image_montage(dir_path, label_to_display, nrows, ncols, figsize=(15,10)):
     # create a Figure and display images
     fig, axes = plt.subplots(nrows=nrows,ncols=ncols, figsize=figsize)
     for x in range(0,nrows*ncols):
-      img = imread(dir_path + '/' + label_to_display + '/' + img_idx[x])
+      img = np.array(PIL.Image.open(urllib.request.urlopen((dir_path + '/' + label_to_display + '/' + img_idx[x]))))
       img_shape = img.shape
       axes[plot_idx[x][0], plot_idx[x][1]].imshow(img)
       axes[plot_idx[x][0], plot_idx[x][1]].set_title(f"Width {img_shape[1]}px x Height {img_shape[0]}px")
