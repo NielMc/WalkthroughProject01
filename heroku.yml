@@ -1,7 +1,6 @@
 setup:
   config:
     PORT: 8000
-    PYTHONPATH: /malaria
 build:
   docker:
     web: Dockerfile
