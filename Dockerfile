@@ -10,5 +10,6 @@ COPY malaria .
 
 ENV PORT 8000
 ENV HOST 0.0.0.0
+ENV PYTHONPATH=.
 
 CMD [ "sh", "-c", "streamlit run --server.port ${PORT} --server.address ${HOST} /malaria/app_pages/app.py" ]
